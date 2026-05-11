@@ -14,7 +14,7 @@
 * description: lots of fun. begin the fun. fun. fun.
 * tags: easy
 
-* url: https://github.com/davidtitherley/tutorials/interface/activity1 
+* url: https://github.com/davidtitherley/tutorials/interface/activity1_v1
 * imageUrl: https://raw.githubusercontent.com/microsoft/pxt-skillmap-sample/main/img/interface/activity1.png
 
 ## space
