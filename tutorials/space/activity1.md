@@ -3,7 +3,7 @@
 
 ## Introduction @unplugged
 
-** Let's explore the depths of space! **
+** Let's explore the depths of the ClarendonVale Office! **
 
 In this tutorial, you'll design a spaceship for your journey.
 
