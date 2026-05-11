@@ -1,254 +1,190 @@
-# Simple Platformer
+# Introduction
+<div style="font-size:20px;">
+In this tutorial we are going to make our own version of the Arcade Classic 'Breakout'
+The aim of the game is to bounce the ball off a paddle to destroy all of the blocks. 
+
+Click Next to Begin
+
+## Step 1
+We are going to begin by creating the bricks for our breakout game. 
+Instead of creating a Sprite, we are going to create an array.
+1. Click Advanced in the menu
+2. Select the ``||arrays:arrays|`` menu and set list to array.
+3. Drag into the on start block.
+4. Select the drop down menu for list and creaate a new variable
+2. Name it: brickColours
+```blocks
+let brickColours = [0. 1]
+```
+
+## Step 2
+We will use the array to make rows of coloured blocks. 
+There are 16 numbers used to represent colours in Makecode. 
+We will use four of them. 
+1. Click the plus sign in your array block and expand to four numbers. 
+2. Name the numbers 2, 4, 5, 7
+```blocks
+let brickColours = [2, 4, 5, 7]
+```
 
 
+## Step 3
+The next step is to set up a loop to create rows.
+1. Go to ``||loops:loops|`` menu and drag out a ``||loops:for index from 0 to 3||`` block. 
+2. Rename index to row.
+```blocks
+let brickColours = [2, 4, 5, 7]
+for (let row = 0; row <= 3; row++) {
+}
+```
+## Step 4
+Now we are going to add another loop insode this for the columns. 
+1. Go to ``||loops:loops|`` menu and drag out a ``||loops:for index from 0 to 3||`` block.
+2. rename index to 'col' short for coloumn. 
+3. Set the look from 0 to 7
+```blocks
+let brickColours = [2, 4, 5, 7]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <=7; col++)}
+}
+```
 
-```jres
-{
-    "transparency16": {
-        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "tile1": {
-        "data": "hwQQABAAAADMzMzMzMzMzLy7u7u7u7vLvMvMzMzMvMu8vMzMzMzLy7zMy8zMvMzLvMy8zMzLzMu8zMzLvMzMy7zMzLzLzMzLvMzMvMvMzMu8zMzLvMzMy7zMvMzMy8zLvMzLzMy8zMu8vMzMzMzLy7zLzMzMzLzLvLu7u7u7u8vMzMzMzMzMzA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "tile2": {
-        "data": "hwQQABAAAAAiIiIiIiIiIkJEREREREQkQiIiIiIiIiRCIiIiIiIiJEIiREQiIiIkQkJERCIkJCRCQiREJCQkJEJCREQiQiIkQkJERCRCIiRCQiREIiQkJEIiREQkJCQkQiIiIiIiIiRCIiIiIiIiJEIiIiIiIiIkQkRERERERCQiIiIiIiIiIg==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "tile3": {
-        "data": "hwQQABAAAAB3d3d3d3d3d1dVVVVVVVV1V3d3d3d3d3VXd3d3d3d3dVdXVVVVVXd1V1dXV3d3d3VXV3VVd3d3dVdXV1d3d3d1V3d1dXV3d3VXd1VXdXd3dVd3dXV1d3d1V3dVVXV3d3VXd3d3d3d3dVd3d3d3d3d1V1VVVVVVVXV3d3d3d3d3dw==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "tile4": {
-        "data": "hwQQABAAAABERERERERERFRVVVVVVVVFVEREREREREVURFRFRERERVRERVRERERFVFRVVUVEREVUVFVVVURFRVRUVVVVVUVFVFRVVVVVRUVUVFVVVURFRVRUVVVFRERFVERFVEREREVURFRFRERERVRERERERERFVFVVVVVVVUVERERERERERA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "tile5": {
-        "data": "hwQQABAAAACqqqqqqqqqqrq7u7u7u7uruqqqqqqqqqu6qqqqqqqqq7qqqqqqqqqruqqqqqqqqqu6qrurqqqqq7q6u7u7uqururq7u7u6q6u6qrurqqqqq7qqqqqqqqqruqqqqqqqqqu6qqqqqqqqq7qqqqqqqqqruru7u7u7u6uqqqqqqqqqqg==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true
-    },
-    "level": {
-        "id": "level",
-        "mimeType": "application/mkcd-tilemap",
-        "data": "MTAxZTAwMGEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDA0MDAwMDAwMDAwMDAwMDQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAzMDAwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMTAxMDEwMDAwMDEwMDAwMDEwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDEwMTAxMDEwMTAxMDEwMTAxMDEwMDAwMDAwMDAwMDEwMDAwMDAwMDAwMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAxMDEwMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAyMDAwMDIwMDAwMDAwMDAwMDAwMDAwMDIwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMjIwMjIwMDAwMjAwMDAwMDAwMDAwMDAwMDAwMDIwMjIyMjIyMjIwMjAwMDAwMjAwMDAyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMg==",
-        "tileset": [
-            "myTiles.transparency16",
-            "myTiles.tile1",
-            "myTiles.tile3",
-            "myTiles.tile4",
-            "myTiles.tile5"
-        ]
-    },
-    "*": {
-        "mimeType": "image/x-mkcd-f4",
-        "dataEncoding": "base64",
-        "namespace": "myTiles"
+## Step 5
+Now we have a way to organise our bricks into columns and rows. Lets create the bricks. 
+This section will be entirely in the row/column loops. 
+1. Go to ``||variables:variables||`` and make a new variable called brickImage.
+2. Select the Advanced menu. 
+3. Go to ``||images:images||`` and drag a ``||image:image.create(width, height)||`` to replace 0 in your variable. 
+4. Set the image width and height as:
+width = 16
+height = 6
+```blocks
+let brickImage: Image = null
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        brickImage = image.create(16, 6)
     }
 }
 ```
 
-```template
-scene.setBackgroundColor(11)
-tiles.setTilemap(tilemap`level`)
-```
-
-## Welcome @unplugged
-
-Now let's take a look at the [__*sidescrolling*__](#scrolld "games that are viewed from the side, with most of the action happening horizontally") 
-[__*platformer*__](#plat "games that rely on jump and run as their main mechanic").  
-
-This kind of game peeks in on the action from the side, using "jump" and "run"
-as the main mechanic.  
-
-By the time you finish this set of tutorials, you should know all you need 
-to make a fun and engaging arcade game worth sharing.
-
-![Our first platformer](/static/skillmaps/platformer/platformer1.gif "Look what we're about to learn today!")
-
-
-## Create the player
-
-The first thing any good platformer needs is a main character. 🐒
-
-In Arcade, our characters are [__*sprites*__](#sprote "2-D images that move on the screen").  
-We'll want to create our main sprite and get it moving before we do anything else. 
-<hr>
-
-🔲 From the ``||sprites:Sprites||`` category, drag the ``||variables:set [mySprite] to sprite [ ] of kind [Player]||`` 
-block to the end of the ``||loops:on start||`` container.
-
-🔲 Click on the grey box in the middle of your
- ``||variables:set [mySprite] to sprite [ ] of kind [Player]||`` block
- to open the sprite editor.  From there, you can switch over to "Gallery"
- and choose a pre-drawn character.
-<hr/>
->>*Tip: Don't like any of the predrawn characters? Stay in the "Editor"
-and create one of your own*!
-
-
+## Step 6
+1. From the ``||images:images||`` menu, drag a ``||images.image.fill(c)||`` block into the column loop. 
+2. Change the variable name from picture to brickImage
+3. From the ``||arrays:arrays||`` menu, drag a ``||arrays.list[0]||`` block to replace the grey colour.
+4. create a new variable called colours. Select this in your get value block. 
+5. replace get value at 0 with the variable row. You can find this block in the variables menu. 
 ```blocks
-scene.setBackgroundColor(11)
-tiles.setTilemap(tilemap`level`)
-// @highlight
-let mySprite = sprites.create(img`
-. . . . . f f f f f . . . . . . 
-. . . . f e e e e e f . . . . . 
-. . . f d d d d d e e f . . . . 
-. . f f f d d f f d e f f . . . 
-. c d d e e d d d d e d d f . . 
-. c c d d d d c d d e d f f f . 
-. c d c c c c d d d e d f b d f 
-. . c d d d d d d e e f f d d f 
-. . . c d d d d e e f f e f f f 
-. . . . f f f e e f e e e f . . 
-. . . . f e e e e e e e f f f . 
-. . . f e e e e e e f f f e f . 
-. . f f e e e e f f f f f e f . 
-. f b d f e e f b b f f f e f . 
-. f d d f e e f d d b f f f f . 
-. f f f f f f f f f f f f f . . 
-    `, SpriteKind.Player)
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+    }
+}
 ```
 
-## Move the player
-
-🢀 Now we need to get the player moving 🢂
-<hr/>
-
-🔲 Drag a ``||controller:move [mySprite] with buttons ⊕||`` block.   
-to the end of the ``||loops:on start||`` container
-
-🔲 Press the ⊕ button on the new block and change the [__*vy*__](#whatVY "vertical velocity") 
-argument to **0** so that the player won't move up or down with the joypad.
-
-<hr/>
-**Now you're ready to give your game a try in the simulator!**
-<br/>
-
+## Step 7
+At this stage there is still nothing in our emulator screen. 
+We are close to creating our bricks. Just a few more things to do. 
+1. from the ``||sprites:sprites||`` menu, drag a ``||sprites.create(img, kind) block into the column loop.
+2. Rename your sprite to a new variable called brick.
+3. Make a new kind called Brick for your sprite. 
+3. Replace the image square the variable brickImage from your variable list. 
 ```blocks
-scene.setBackgroundColor(11)
-tiles.setTilemap(tilemap`level`)
-let mySprite = sprites.create(img`
-. . . . . f f f f f . . . . . . 
-. . . . f e e e e e f . . . . . 
-. . . f d d d d d e e f . . . . 
-. . f f f d d f f d e f f . . . 
-. c d d e e d d d d e d d f . . 
-. c c d d d d c d d e d f f f . 
-. c d c c c c d d d e d f b d f 
-. . c d d d d d d e e f f d d f 
-. . . c d d d d e e f f e f f f 
-. . . . f f f e e f e e e f . . 
-. . . . f e e e e e e e f f f . 
-. . . f e e e e e e f f f e f . 
-. . f f e e e e f f f f f e f . 
-. f b d f e e f b b f f f e f . 
-. f d d f e e f d d b f f f f . 
-. f f f f f f f f f f f f f . . 
-    `, SpriteKind.Player)
-    // @highlight
-controller.moveSprite(mySprite, 100, 0)
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+    }
+}
 ```
 
-## Add gravity
+## Step 8
+Our final step in creating the bricks is to set the x and y position of the bricks.
+1. From the ``||sprites:sprites||`` menu, drag a ``||sprites:sprites.setPosition(x)||`` block into the loop. 
+2. From the ``||Math:Math||`` menu, drag a ``||math:math.plus||`` block to replace 0
+3. Add 20 to the first part of your plus block. 
+4. In the second part of the plus block we are going to put in a multiply block from Maths. 
+5. Drag the variable col into the first part of the multiplier. 
+6. Add 18 to the second part of the multiplier. 
 
-To make the game feel more realistic, let's add some gravity.
-
-To accomplish that, we can add [__*acceleration*__](#accel "increased speed in a direction") to "pull down" on our sprite.
-<hr/>
-🔲 Drag a ``||sprites:set [mySprite] [x] to [0]||`` block to the end of 
-the ``||loops:on start||`` container.
-
-🔲 Click the dropdown to change **x** to **ay (acceleration y)** 
-
-🔲 Replace **0** with **500**.
-<br/>
-
-
-
+This will space out each of your blocks evenly on the row. 
 ```blocks
-scene.setBackgroundColor(11)
-tiles.setTilemap(tilemap`level`)
-let mySprite = sprites.create(img`
-. . . . . f f f f f . . . . . . 
-. . . . f e e e e e f . . . . . 
-. . . f d d d d d e e f . . . . 
-. . f f f d d f f d e f f . . . 
-. c d d e e d d d d e d d f . . 
-. c c d d d d c d d e d f f f . 
-. c d c c c c d d d e d f b d f 
-. . c d d d d d d e e f f d d f 
-. . . c d d d d e e f f e f f f 
-. . . . f f f e e f e e e f . . 
-. . . . f e e e e e e e f f f . 
-. . . f e e e e e e f f f e f . 
-. . f f e e e e f f f f f e f . 
-. f b d f e e f b b f f f e f . 
-. f d d f e e f d d b f f f f . 
-. f f f f f f f f f f f f f . . 
-    `, SpriteKind.Player)
-controller.moveSprite(mySprite, 100, 0)
-// @highlight
-mySprite.ay = 500
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+        brick.x = 20 + col * 18
+    }
+}
 ```
 
-## Jump Pt. 1
-
-Now that the player is on the ground, we can make them jump!
-
-Let's attach a jumping action to the 🅐 button.
-<hr/>
-
-🔲 Start by dragging an ``||controller:on [A] button [pressed]||`` block into the workspace.
-
-🔲 Inside of that, add ``||sprites:set [mySprite] [x] to [0]||`` . 
-
-🔲 To choose the attribute for the player's [__*vertical velocity*__](#whatVelY "speed in the up/down direction"),
-click the dropdown menu and change **x** to **vy (velocity y)**.
-
-🔲 The player will jump upward if you change **0** to something smaller.
-Try  **-150** or **-200**.  
-<br/>
-
-
+## Step 9
+The last part is to set the y position. We can do this easily by duplicating the x block. 
+1. Right click on the set brick x block, and select duplicate. 
+2. Change x to y. 
+3. change column to row. 
+4. change 18 to 10.
 ```blocks
-scene.setBackgroundColor(11)
-tiles.setTilemap(tilemap`level`)
-let mySprite = sprites.create(img`
-. . . . . f f f f f . . . . . . 
-. . . . f e e e e e f . . . . . 
-. . . f d d d d d e e f . . . . 
-. . f f f d d f f d e f f . . . 
-. c d d e e d d d d e d d f . . 
-. c c d d d d c d d e d f f f . 
-. c d c c c c d d d e d f b d f 
-. . c d d d d d d e e f f d d f 
-. . . c d d d d e e f f e f f f 
-. . . . f f f e e f e e e f . . 
-. . . . f e e e e e e e f f f . 
-. . . f e e e e e e f f f e f . 
-. . f f e e e e f f f f f e f . 
-. f b d f e e f b b f f f e f . 
-. f d d f e e f d d b f f f f . 
-. f f f f f f f f f f f f f . . 
-    `, SpriteKind.Player)
-controller.moveSprite(mySprite, 100, 0)
-mySprite.ay = 500
-// @highlight
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.vy = -200
-})
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+        brick.x = 20 + col * 18
+        brick.y = 20 + col * 10
+    }
+}
 ```
 
-## Done
+## Complete
+Check your screen. You should now have four rows of different coloured blocks. 
+This is the end of the tutorial, you are now up to the next step. 
 
-🔥 **That's it! We've created a simple platformer game.** 🔥  
-
-In the next lesson we'll learn how to add obstacles and goals.
+Going further
+Try experimenting with your block colours by changing the array values in the brickColours variable. 
