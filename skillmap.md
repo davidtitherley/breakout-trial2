@@ -11,10 +11,10 @@
 
 * name: Breakout Create the bricks
 * type: tutorial
-* description: Intro to our tutorial cards
+* description: lots of fun. begin the fun. fun. fun.
 * tags: easy
 
-* url: https://github.com/davidtitherley/tutorials/breakout-trial2/activity1 
+* url: https://github.com/davidtitherley/tutorials/interface/activity1 
 * imageUrl: https://raw.githubusercontent.com/microsoft/pxt-skillmap-sample/main/img/interface/activity1.png
 
 ## space
