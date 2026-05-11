@@ -1,314 +1,190 @@
-# Get to Know MakeCode Arcade 
+# Introduction
+<div style="font-size:20px;">
+In this tutorial we are going to make our own version of the Arcade Classic 'Breakout'
+The aim of the game is to bounce the ball off a paddle to destroy all of the blocks. 
+
+Click Next to Begin
+
+## Step 1
+We are going to begin by creating the bricks for our breakout game. 
+Instead of creating a Sprite, we are going to create an array.
+1. Click Advanced in the menu
+2. Select the ``||arrays:arrays|`` menu and set list to array.
+3. Drag into the on start block.
+4. Select the drop down menu for list and creaate a new variable
+2. Name it: brickColours
+```blocks
+let brickColours = [0. 1]
+```
+
+## Step 2
+We will use the array to make rows of coloured blocks. 
+There are 16 numbers used to represent colours in Makecode. 
+We will use four of them. 
+1. Click the plus sign in your array block and expand to four numbers. 
+2. Name the numbers 2, 4, 5, 7
+```blocks
+let brickColours = [2, 4, 5, 7]
+```
 
 
-```ghost
-let mySprite: Sprite = null;
-mySprite.startEffect(effects.spray)
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    game.showLongText("The little unicorn walked into the meadow.", DialogLayout.Top)
-    scene.cameraShake(4, 500)
-})
-scene.setBackgroundColor(9)
-scene.setBackgroundImage()
-mySprite.x += 0
-effects.confetti.startScreenEffect()
-effects.confetti.endScreenEffect()
-mySprite.setPosition(70, 80)
-for (let index = 0; index < 4; index++) {
-    controller.moveSprite(mySprite)
-    music.setVolume(20)
-    music.playMelody("- - - - - - - - ", 120)
+## Step 3
+The next step is to set up a loop to create rows.
+1. Go to ``||loops:loops|`` menu and drag out a ``||loops:for index from 0 to 3||`` block. 
+2. Rename index to row.
+```blocks
+let brickColours = [2, 4, 5, 7]
+for (let row = 0; row <= 3; row++) {
 }
-game.onUpdateInterval(5000, function () {
-    if (game.askForString("Continue?") == "Y" || game.askForString("Continue?") == "y") {
-        mySprite.say(":)")
+```
+## Step 4
+Now we are going to add another loop insode this for the columns. 
+1. Go to ``||loops:loops|`` menu and drag out a ``||loops:for index from 0 to 3||`` block.
+2. rename index to 'col' short for coloumn. 
+3. Set the look from 0 to 7
+```blocks
+let brickColours = [2, 4, 5, 7]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <=7; col++)}
+}
+```
+
+## Step 5
+Now we have a way to organise our bricks into columns and rows. Lets create the bricks. 
+This section will be entirely in the row/column loops. 
+1. Go to ``||variables:variables||`` and make a new variable called brickImage.
+2. Select the Advanced menu. 
+3. Go to ``||images:images||`` and drag a ``||image:image.create(width, height)||`` to replace 0 in your variable. 
+4. Set the image width and height as:
+width = 16
+height = 6
+```blocks
+let brickImage: Image = null
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        brickImage = image.create(16, 6)
     }
-    game.splash("")
-})
-
+}
 ```
 
-### @explicitHints true
-
-## Introduction @unplugged
-
-![Psyched Monkey](/static/skillmap/interface/monkey.png "Psyched Monkey is Ready!" )
-
-**Are you ready to start coding your own games?**
-
-Complete this tutorial to learn how to:
-- follow tutorial prompts
-- find blocks in the toolbox
-- build code in the workspace
-- run your game on the built-in simulator 
-
-Before you know it, you'll have an arcade game of your very own!
-
-## step 1 
-
-**⭐Welcome⭐**
-
-You've just discovered the most important part of following a tutorial — reading instructions!
-
-If you can't see all of the instructions, click **[v More...]** below to expand the box.
-
----
-
-When you're ready to move to the next step, click **[ >  Next]** to continue.  
-
-
-## step 2
-
-This box is where you'll find information for each step. 
-
-If you don't find all of the info you need, 
-click the lightbulb to the right for an extra hint.
-
-
-#### ~ tutorialhint 
-```
-**You found the hints!**
-```
-
-
-## Using the workspace
-
-Now let's talk about your [__*workspace*__](#workIt "The area where you build code").
-
-Your workspace is the area below the instructions where you'll connect blocks to build your program. 
-Not all blocks will connect with one another, but we'll talk more about that later.
-
----
-
-🔲 Click inside the text area of the ``||game:splash "___"||`` block 
-and change the current sentence to something a little more exciting.
-
----
-
-**Tip:** Did you notice that the first use of the word __workspace__ had a special look? 
-From time to time, we'll enhance important words. Roll your mouse over them to see a definition.
-
-#### ~ tutorialhint 
+## Step 6
+1. From the ``||images:images||`` menu, drag a ``||images.image.fill(c)||`` block into the column loop. 
+2. Change the variable name from picture to brickImage
+3. From the ``||arrays:arrays||`` menu, drag a ``||arrays.list[0]||`` block to replace the grey colour.
+4. create a new variable called colours. Select this in your get value block. 
+5. replace get value at 0 with the variable row. You can find this block in the variables menu. 
 ```blocks
-game.splash("I like bananas!")
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+    }
+}
 ```
 
-```template
-game.splash("These blocks are in your workspace!")
-
-```
-
-## Meet the Blocks  @unplugged
-
-Blocks can be dragged out from the  [__*toolbox*__](#tools "The strip to the left of your workspace that lists block categories."), 
-
-connected, duplicated, and deleted.
-
-Keep going to learn more about blocks.
-
-![Block Animation](/static/skillmap/interface/use_blocks.gif "Blocks appear, duplicate, and delete." )
-
-
-
-## Your Toolbox
-
-**Blocks you need won't always be in the workspace to start.**
-
-In the instructions, block descriptions for the block you need will 
-often be highlighted in the same color as the toolbox 
-category where they live. 
-
-**For example:** We might use ``||game:splash "___"||`` when 
-we want you to find this:
-
-```block
-game.splash(" ")
-```
-
-This block adds a [__*splash screen*__](#splasht "A full-screen message that shows while a program or level is loading") to your project.
-
-## Your Toolbox 2
-
-
-
-**Let's see how this works**
-
-🔲 Find the 
-``||scene:set background color to [ ]||`` block and snap it at the top of 
-the **on start** container already in the workspace. 
-
-#### ~ tutorialhint 
+## Step 7
+At this stage there is still nothing in our emulator screen. 
+We are close to creating our bricks. Just a few more things to do. 
+1. from the ``||sprites:sprites||`` menu, drag a ``||sprites.create(img, kind) block into the column loop.
+2. Rename your sprite to a new variable called brick.
+3. Make a new kind called Brick for your sprite. 
+3. Replace the image square the variable brickImage from your variable list. 
 ```blocks
-scene.setBackgroundColor(0)
-game.splash("My monkey is better than yours")
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+    }
+}
 ```
 
+## Step 8
+Our final step in creating the bricks is to set the x and y position of the bricks.
+1. From the ``||sprites:sprites||`` menu, drag a ``||sprites:sprites.setPosition(x)||`` block into the loop. 
+2. From the ``||Math:Math||`` menu, drag a ``||math:math.plus||`` block to replace 0
+3. Add 20 to the first part of your plus block. 
+4. In the second part of the plus block we are going to put in a multiply block from Maths. 
+5. Drag the variable col into the first part of the multiplier. 
+6. Add 18 to the second part of the multiplier. 
 
-
-## The Exception
-
-Every rule has an exception, so let's look at one of the blocks
-that doesn't share the same color as the category where it lives.
-
-The ``||variables:set [mySprite] to sprite [ ] of kind [Player]||`` block
-is red, but it lives inside the ``||sprites:Sprites||`` category.
-
----
-
-<!-- **Tip:** If you can't find the block you're looking for, try -->
-
-
-🔲 Snap ``||variables:set [my sprite] to sprite [ ] of kind [Player]||`` into the
-end of the **on start** container and 
-play around with it until a [__*sprite*__](#sprote "A 2-D image that moves on the screen") shows on the screen.
-
-*(Roll your mouse over the word __sprite__ above to see a definition.)*
-
----
-
-**Tip:** Drag ``||game:splash "___"||`` out of the ``||loops:on start||`` container
-and drop it back into the toolbox to delete it so your sprite will be revealed!
-
-#### ~ tutorialhint
-
-![Open image editor](/static/skillmap/misc/open-image-editor-small.gif "How to open the image editor." )
-
----
-
-
-
+This will space out each of your blocks evenly on the row. 
 ```blocks
-scene.setBackgroundColor(5)
-let mySprite = sprites.create(img`
-    e e e . . . . e e e . . . . 
-    c d d c . . c d d c . . . . 
-    c b d d f f d d b c . . . . 
-    c 3 b d d b d b 3 c . . . . 
-    f b 3 d d d d 3 b f . . . . 
-    e d d d d d d d d e . . . . 
-    e d f d d d d f d e . b f b 
-    f d d f d d f d d f . f d f 
-    f b d d b b d d 2 f . f d f 
-    . f 2 2 2 2 2 2 b b f f d f 
-    . f b d d d d d d b b d b f 
-    . f d d d d d b d d f f f . 
-    . f d f f f d f f d f . . . 
-    . f f . . f f . . f f . . . 
-    `, SpriteKind.Player)
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+        brick.x = 20 + col * 18
+    }
+}
 ```
 
-
-## Container Blocks
-
-**Now let's look at different types of blocks and how to use them.** 
-
-First, there are [__*container blocks*__](#blockIt "Blocks that hold other blocks"). 
-Container blocks have an edge at both the the top and bottom with an open space
-in the middle that allows other blocks to snap inside. Container blocks control 
-*when* the code inside runs. Here is an example:
-
+## Step 9
+The last part is to set the y position. We can do this easily by duplicating the x block. 
+1. Right click on the set brick x block, and select duplicate. 
+2. Change x to y. 
+3. change column to row. 
+4. change 18 to 10.
 ```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
-```
----
-
-🔲  Find an ``||controller:on [A] button pressed ||`` container 
-block and drag it into the workspace. You will add to it in the next step.  
-
-#### ~ tutorialhint
-
-```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    let mySprite: Sprite = null
-})
-```
-
-## Standard Blocks
-
-Next, there are [__*standard blocks*__](#sBlockIt "Single line blocks that make up the majority of most programs"). 
-Standard blocks are single-line blocks with notches at the top and bottom that
-allow them to click-in between other pieces. These blocks run in order from top 
-to bottom within the container that they're placed.
-
-Here is an example of a standard block:
-
-```block
-let mySprite: Sprite = null;
-mySprite.startEffect(effects.spray)
+namespace SpriteKind {
+    export const Bricks = SpriteKind.create()
+}
+let brick: Sprite = null
+let brickImage: Image = null
+let brickColours = [
+2,
+4,
+5,
+7
+]
+for (let row = 0; row <= 3; row++) {
+    for (let col = 0; col <= 7; col++) {
+        let colours: number[] = []
+        brickImage = image.create(16, 6)
+        brickImage.fill(colours[row])
+        brick = sprites.create(brickImage, SpriteKind.Bricks)
+        brick.x = 20 + col * 18
+        brick.y = 20 + col * 10
+    }
+}
 ```
 
----
+## Complete
+Check your screen. You should now have four rows of different coloured blocks. 
+This is the end of the tutorial, you are now up to the next step. 
 
-🔲  Find a ``||sprites:[mySprite] start [spray] effect ||``  
-block and snap it into the  **on A button pressed** container...then 
-choose your own effect!
-
-#### ~ tutorialhint
-```blocks
-let mySprite: Sprite = null;
-
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.startEffect(effects.confetti)
-})
-```
-
-
-
-## Value Blocks
-
-Finally, we have [__*value blocks*__](#aBlockIt "special pieces that provide values for other blocks"). 
-Value blocks are special pieces that add information to other
-blocks. Sometimes they're pointy, sometimes they're rounded,
-but they always need another block to snap into. Value blocks look something like this:
-
-![Value Blocks](/static/skillmap/interface/parameter-blocks.png "This is what the shape of an value block looks like" )
-
----
-
-🔲  Snap a ``||sprites:[mySprite] say [":)"] ||`` block into the end of the
-**on A button pressed** container.
-
-🔲  Find the ``||game: ask for number [" "] ||`` value block and pop it inside to replace **":)"**.
-
----
-
-**Tip:** Value blocks have different shapes 
-depending on what kind of information they add. Each value will only
-fit in certain types of spaces. 
-
-#### ~ tutorialhint
-```blocks
-let mySprite: Sprite = null;
-
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite.say(game.askForNumber(""))
-})
-```
-
-## Putting it Together
-
-🎨 Now get creative 🎨
-
-Feel free to take a look at the extra blocks we've added into the toolbox. 
-
-It's okay if you don't know what they all do.
-Play around with them and see how they affect your game!
-
----
-
-**Tip:** You can test your game whenever you want using the simulator
-to the left!  Use the refresh button (🔄) to reload it, and play your
-game using the buttons you've programmed!  
-
-
-
-## Conclusion 
-
-🎈 Congratulations 🎈 
-
-You've learned everything you need to know to graduate to a new tutorial.
-
-Now you can continue on and learn even more tricks for
-creating games with MakeCode Arcade!  
+Going further
+Try experimenting with your block colours by changing the array values in the brickColours variable. 
