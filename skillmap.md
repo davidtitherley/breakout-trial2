@@ -69,8 +69,8 @@
 
 
 ## platformer
-* name: Learn to Make a Platformer
-* description: A skillmap that takes you through how to build a platformer with multiple levels.
+* name: Learn to Create a Skillmap
+* description: This is how we do it.
 * completionUrl: https://microsoft.github.io/pxt-skillmap-sample/certificates/learn-to-make-a-platformer.pdf
 
 ### platformer-activity1
