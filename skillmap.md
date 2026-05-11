@@ -18,15 +18,15 @@
 * imageUrl: https://raw.githubusercontent.com/microsoft/pxt-skillmap-sample/main/img/interface/activity1.png
 
 ## space
-* name: Design a Space Explorer
-* description: Let's explore the depths of space! We'll design a vessel for space travel, add some enemies, and populate the universe with planets.
+* name: Design a Skillmap
+* description: Let's explore making a skillmap
 * completionUrl: https://microsoft.github.io/pxt-skillmap-sample/certificates/design-a-space-explorer.pdf
 
 ### space-activity1
 
-* name: Ship Design
+* name: Skill map Design
 * type: tutorial
-* description: Draw and code a spaceship!
+* description: Code and Create a Skillmap
 * tags: easy
 * next: space-activity2
 
@@ -69,7 +69,7 @@
 
 
 ## platformer
-* name: Learn to Create a Skillmap
+* name: Breakout 
 * description: This is how we do it.
 * completionUrl: https://microsoft.github.io/pxt-skillmap-sample/certificates/learn-to-make-a-platformer.pdf
 
@@ -77,7 +77,7 @@
 
 * name: thisrocks
 * type: tutorial
-* description: Learn how to make a player character that can jump and move around a tilemap.
+* description: This is where i need to see changes
 * url: https://github.com/microsoft/pxt-skillmap-sample/tutorials/platformer/activity1
 * imageUrl: https://raw.githubusercontent.com/microsoft/pxt-skillmap-sample/main/img/platformer/activity1.png
 * tags: easy
