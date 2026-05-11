@@ -75,7 +75,7 @@
 
 ### platformer-activity1
 
-* name: Simple Platformer
+* name: thisrocks
 * type: tutorial
 * description: Learn how to make a player character that can jump and move around a tilemap.
 * url: https://github.com/microsoft/pxt-skillmap-sample/tutorials/platformer/activity1
@@ -85,9 +85,9 @@
 
 ### platformer-activity2
 
-* name: Camera and Tiles
+* name: thisisthename
 * type: tutorial
-* description: Learn how to use the camera and add tile overlap events to give the player a way to win and lose.
+* description: learn how to change and edit a skillmap.
 * url: https://github.com/microsoft/pxt-skillmap-sample/tutorials/platformer/activity2
 * imageUrl: https://raw.githubusercontent.com/microsoft/pxt-skillmap-sample/main/img/platformer/activity2.png
 * tags: easy, tiles
