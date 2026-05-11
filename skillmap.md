@@ -3,13 +3,13 @@
 * description: Level up your game making skills by completing the tutorials in this guide.
 
 ## interface
-* name: Learn to use MakeCode Arcaded
+* name: Let's make breakout
 * description: This will teach you how to complete tutorials in Microsoft MakeCode Arcade.
 * completionUrl: https://microsoft.github.io/pxt-skillmap-sample/certificates/understanding-arcade-tutorials.pdf
 
 ### interface-activity1
 
-* name: Learn to use MakeCode Arcade
+* name: Breakout Create the bricks
 * type: tutorial
 * description: Intro to our tutorial cards
 * tags: easy
